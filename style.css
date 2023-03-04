@@ -1,0 +1,19 @@
+.card-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+}
+
+.card {
+	background-color: pink;
+}
+
+.read {
+	content: "Read";
+	background-color: green;
+}
+
+.not-read {
+	content: "Not Read";
+	background-color: red;
+}
