@@ -19,8 +19,7 @@ function createNewBook() {
 	let author = document.querySelector("#author");
 	let pages = document.querySelector("#pages");
 	let read = "";
-
-	let readOptions = [...document.querySelectorAll(".read")];
+	let readOptions = [...document.querySelectorAll(".read-status")];
 
 	readOptions.forEach((option) => {
 		if (option.checked) {
@@ -50,28 +49,45 @@ function addDeleteBtn() {
 	return deleteBtn;
 }
 
+function addButtons(book) {
+	let buttonZone = document.createElement("div");
+	buttonZone.className = "button-zone"
+
+	//Add read toggle
+	buttonZone.appendChild(addReadBtn(book));
+
+	// Add delete button
+	buttonZone.appendChild(addDeleteBtn());
+
+	return buttonZone;
+}
+
 function displayLibrary(myLibrary) {
 	myLibrary.forEach((book) => {
 		// Create new card for each book
 		let newCard = document.createElement("div");
 		newCard.className = "card";
 
+		let cardInfo = document.createElement("div")
+		cardInfo.className = "card-info";
+
+		const label = ["Name:", "Author:", "Pages:"];
+		let i = 0;
+
 		for (let prop in book) {
 			if (Object.prototype.hasOwnProperty.call(book, prop) && prop !== "read") {
 				// Add info to new paragraph
 				let newPara = document.createElement("p");
-				newPara.textContent = book[prop];
-				newCard.appendChild(newPara);
+				newPara.textContent = `${label[i]} ${book[prop]}`;;
+				cardInfo.appendChild(newPara);
+				i++;
 			}
 		}
 
-		//Add read toggle
-		newCard.appendChild(addReadBtn(book));
-
-		// Add delete button
-		newCard.appendChild(addDeleteBtn());
-
+		newCard.appendChild(cardInfo);
+		newCard.appendChild(addButtons(book));
 		cardContainer.appendChild(newCard);
+		
 	});
 }
 
@@ -80,6 +96,12 @@ function addNewBook(newBook) {
 	let newCard = document.createElement("div");
 	newCard.className = "card";
 
+	let cardInfo = document.createElement("div")
+		cardInfo.className = "card-info";
+
+	const label = ["Name:", "Author:", "Pages:"];
+	let i = 0;
+
 	for (let prop in newBook) {
 		if (
 			Object.prototype.hasOwnProperty.call(newBook, prop) &&
@@ -87,23 +109,25 @@ function addNewBook(newBook) {
 		) {
 			// Add info to new paragraph
 			let newPara = document.createElement("p");
-			newPara.textContent = newBook[prop];
-			newCard.appendChild(newPara);
+			newPara.textContent = `${label[i]} ${newBook[prop]}`;
+			cardInfo.appendChild(newPara);
+			i++;
 		}
 	}
 
+	newCard.appendChild(cardInfo);
+	newCard.appendChild(addButtons(newBook))
 	cardContainer.appendChild(newCard);
-
-	//Add read toggle
-	newCard.appendChild(addReadBtn(newBook));
-
-	// Add delete button
-	newCard.appendChild(addDeleteBtn());
 }
 
 function addBookToCard(e) {
 	// Prevent default behavior
 	e.preventDefault();
+
+	if (document.querySelector("#title").value.length === 0 || document.querySelector("#author").value.length === 0) {
+		alert("Please fill all the fields");
+		return;
+	}
 
 	// Create new book with input
 	let newBook = createNewBook();
@@ -122,13 +146,15 @@ function deleteBook(currentDiv, e) {
 	myLibrary.splice(index, 1);
 
 	// // delete book from display
-	e.target.parentNode.remove();
+	e.target.parentNode.parentNode.remove();
 }
 
 function processButton(e) {
 	if (e.target.className === "delete") {
 		let currentDiv = this.children;
-		deleteBook(currentDiv, e);
+		if (confirm("Are you sure you want to delete this book?") === true) {
+			deleteBook(currentDiv, e);
+		}
 	}
 
 	if (e.target.className === "read" || e.target.className === "not-read") {

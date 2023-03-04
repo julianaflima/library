@@ -12,46 +12,50 @@
 
 <body>
 
-	<h1>My Books!</h1>
-	<p>Here are my books and whether they have been read or not:</p>
-
-	<div class="card-container">
-		
-	</div>
+	<h1>My Book Library</h1>
 
 	<div>
 		<form>
-			<legend>Add a new book to the table!</legend>
+			<legend>Add a new book</legend>
 
-			<div>
-				<label for="title">Book Title</label>
-				<input type="text" name="title" id="title" required>
+			<div class="form-input">
+				<div>
+					<label for="title">Book Title</label>
+					<input type="text" name="title" id="title" required>
+				</div>
+
+				<div>
+					<label for="author">Author</label>
+					<input type="text" id="author">
+				</div>
+
+				<div>
+					<label for="pages">Pages</label>
+					<input type="number" name="pages" id="pages" min="0">
+				</div>
+
+				<div>
+					<span>Read?</span>
+					<label for="read">Yes</label>
+					<input type="radio" name="read" id="read" value= "yes" class="read-status">
+
+					<label for="not-read">No</label>
+					<input type="radio" name="read" id="not-read" value="no" class="read-status">
+				</div>
 			</div>
 
-			<div>
-				<label for="author">Author</label>
-				<input type="text" id="author">
+			<div class="button">
+				<button id="add-btn">Add new book</button>
 			</div>
-
-			<div>
-				<label for="pages">Pages</label>
-				<input type="number" name="pages" id="pages" min="0">
-			</div>
-
-			<div>
-				<span>Read?</span>
-				<label for="read">Yes</label>
-				<input type="radio" name="read" id="read" value= "yes" class="read">
-
-				<label for="not-read">No</label>
-				<input type="radio" name="read" id="not-read" value="no" class="read">
-			</div>
-
-			<button id="add-btn">Add new book</button>
 		</form>
 
 	</div>
 
+	<div class="container-card-container">
+		<div class="card-container">
+			
+		</div>
+	</div>
 </body>
 
 	</html>

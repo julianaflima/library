@@ -1,19 +1,97 @@
+body {
+	padding: 30px;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+
+form {
+	margin-bottom: 10px;
+}
+
+.form-input {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 8px;
+	justify-content: center;
+	align-items: center;
+}
+
+input[type="number"] {
+	max-width: 70px;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.button button {
+	color: #271033;
+	background-color: transparent;
+	border-radius: 5px;
+	/*width: 100px;*/
+	border: 1px solid #271033;
+}
+
+.container-card-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .card-container {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 30px;
+	justify-content: flex-start;
+	align-items: stretch;
 }
 
 .card {
-	background-color: pink;
+	color: #271033;
+	background-color: #ffe882;
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.card-info {
+	padding: 0 15px;
+	margin: 10px 0 0px;
+}
+
+.button-zone {
+	display: flex;
 }
 
 .read {
-	content: "Read";
-	background-color: green;
+	color: #388697;
+	background-color: transparent;
+	border-radius: 5px;
+	width: 100px;
+	border: 1px solid #271033;
 }
 
 .not-read {
-	content: "Not Read";
-	background-color: red;
+	color: #FA8334;
+	/*background-color: #FA8334;*/
+	background-color: transparent;
+	border-radius: 5px;
+	box-sizing: border-box;
+	width: 100px;
+	border: 1px solid #271033;
+}
+
+.delete {
+	color: #271033;
+	background-color: #FFFD77;
+	border-radius: 5px;
+	box-sizing: border-box;
+	width: 100px;
+	border: 1px solid #271033;
 }
