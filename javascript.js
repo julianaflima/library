@@ -140,12 +140,12 @@ function addBookToCard(e) {
 }
 
 function deleteBook(currentDiv, e) {
-	let index = Array.prototype.indexOf.call(currentDiv, e.target.parentNode);
+	let index = Array.prototype.indexOf.call(currentDiv, e.target.parentNode.parentNode);
 
 	// delete book from array
 	myLibrary.splice(index, 1);
 
-	// // delete book from display
+	// delete book from display
 	e.target.parentNode.parentNode.remove();
 }
 
