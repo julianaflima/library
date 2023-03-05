@@ -33,28 +33,21 @@ input[type="number"] {
 	color: #271033;
 	background-color: transparent;
 	border-radius: 5px;
-	/*width: 100px;*/
 	border: 1px solid #271033;
 }
 
-.container-card-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 .card-container {
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 200px);
+	grid-auto-flow: row; 
 	gap: 30px;
-	justify-content: flex-start;
-	align-items: stretch;
+	width: 100%;
 }
 
 .card {
 	color: #271033;
-	background-color: #ffe882;
-	width: 200px;
+	background-color: #EBE2D8;
+	/*width: 200px;*/
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -70,28 +63,28 @@ input[type="number"] {
 }
 
 .read {
-	color: #388697;
+	color: #3f292b;
 	background-color: transparent;
 	border-radius: 5px;
 	width: 100px;
-	border: 1px solid #271033;
+	border: 1px solid #a37b73;
 }
 
 .not-read {
-	color: #FA8334;
+	color: #d34f73;
 	/*background-color: #FA8334;*/
 	background-color: transparent;
 	border-radius: 5px;
 	box-sizing: border-box;
 	width: 100px;
-	border: 1px solid #271033;
+	border: 1px solid #a37b73;
 }
 
 .delete {
 	color: #271033;
-	background-color: #FFFD77;
+	background-color: #db7f67;
 	border-radius: 5px;
 	box-sizing: border-box;
 	width: 100px;
-	border: 1px solid #271033;
+	border: 1px solid #a37b73;
 }
