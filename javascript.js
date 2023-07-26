@@ -156,14 +156,3 @@ class Card {
 const myLibraryClass = new Library();
 
 myLibraryClass.init();
-
-// const book1 = new Book("dom casmurro", "machado de assis", "55", "yes");
-// const book2 = new Book("senhora", "José de Alencar", "350", "no");
-
-// const book3 = new Book("about ice", "author whoworteit", "400", "no");
-
-// myLibraryClass.addBookToArray(book1);
-// myLibraryClass.addBookToArray(book2);
-// myLibraryClass.addBookToArray(book3);
-
-// myLibraryClass.displayLibrary();
