@@ -43,21 +43,45 @@ class Library {
 	}
 
 	init() {
+		const titleInput = document.querySelector("#title");
+		titleInput.addEventListener("input", (e) => {
+			if (titleInput.validity.tooShort) {
+				titleInput.setCustomValidity("title is too short");
+				titleInput.reportValidity();
+			} else {
+				titleInput.setCustomValidity("");
+			}
+		});
+
+		const authorInput = document.querySelector('#author');
+		authorInput.addEventListener('input', (e) => {
+			if (authorInput.validity.tooShort) {
+				authorInput.setCustomValidity("author name is too short");
+				authorInput.reportValidity();
+			} else {
+				authorInput.setCustomValidity("");
+			}
+		});
 		//Add book to array with browser
 		const addNewBookButton = document.querySelector("#add-btn");
 		addNewBookButton.addEventListener("click", (e) => {
 			// Prevent default behavior
 			e.preventDefault();
 
+			if (!titleInput.validity.valid) {
+				titleInput.setCustomValidity("title is too short");
+				titleInput.reportValidity();
+				return
+			} 
+
+			if (!authorInput.validity.valid) {
+				authorInput.setCustomValidity("author name is too short");
+				authorInput.reportValidity();
+				return
+			}
 			// Doesn't allow submission if title or author fields are empty
 			let title = document.querySelector("#title").value;
 			let author = document.querySelector("#author").value;
-
-			if (title.length === 0 || author.length === 0) {
-				alert("Please fill all the fields");
-				return;
-			}
-
 			let pages = document.querySelector("#pages").value;
 			let read = "";
 			let readOptions = [...document.querySelectorAll(".read-status")];
